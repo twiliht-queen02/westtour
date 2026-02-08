@@ -35,3 +35,34 @@ html {
 .social-icon {
     @apply text-gray-500 hover:text-white transition transform hover:scale-125;
 }
+
+.price-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #2563eb;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 1rem;
+    font-weight: 900;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.quba-price::before {
+    content: "35 AZN";
+}
+
+.gabala-price::before {
+    content: "35 AZN";
+}
+
+.sheki-price::before {
+    content: "85 AZN";
+}
+.hero-bg { 
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                      url('https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3'); 
+    background-size: cover; 
+    background-position: center; 
+}
