@@ -13,7 +13,7 @@
             background-size: cover; background-position: center; 
         }
         .tour-img-wrapper { position: relative; overflow: hidden; border-radius: 24px 24px 0 0; }
-        .tour-img-wrapper img { transition: all 0.8s ease; }
+        .tour-img-wrapper img { transition: all 0.8s ease; width: 100%; height: 240px; object-fit: cover; }
         .tour-img-wrapper:hover img { transform: scale(1.1); }
         .overlay-card {
             position: absolute; inset: 0; background: rgba(0,0,0,0.3);
@@ -36,8 +36,8 @@
                     <i class="fa-solid fa-right-to-bracket"></i> Giriş
                 </button>
                 <div id="user-info" class="hidden flex items-center bg-gray-100 px-4 py-2 rounded-full border">
-                    <span id="user-display" class="font-bold text-blue-700 mr-3"></span>
-                    <button onclick="logout()" class="text-red-500 font-bold hover:text-red-700">Çıxış</button>
+                    <span id="user-display" class="font-bold text-blue-700 mr-3 text-sm"></span>
+                    <button onclick="logout()" class="text-red-500 font-bold hover:text-red-700 text-xs">Çıxış</button>
                 </div>
             </div>
         </div>
@@ -45,14 +45,14 @@
 
     <div id="admin-panel" class="hidden container mx-auto mt-24 px-6">
         <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded shadow-lg">
-            <h2 class="text-xl font-bold text-yellow-800 mb-4"><i class="fa-solid fa-lock"></i> Admin Paneli (Yeni Tur Əlavə Et)</h2>
+            <h2 class="text-xl font-bold text-yellow-800 mb-4"><i class="fa-solid fa-lock"></i> Admin Paneli</h2>
             <form id="add-tour-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" id="tour-title" placeholder="Turun Adı" class="p-3 border rounded-xl outline-none focus:border-blue-500">
-                <input type="text" id="tour-price" placeholder="Qiymət (məs: 30 AZN)" class="p-3 border rounded-xl outline-none focus:border-blue-500">
-                <input type="text" id="tour-img" placeholder="Şəkil URL" class="p-3 border rounded-xl outline-none focus:border-blue-500">
-                <input type="text" id="tour-link" placeholder="Səhifə Linki (məs: gabala.html)" class="p-3 border rounded-xl outline-none focus:border-blue-500">
-                <button type="submit" class="bg-green-600 text-white px-4 py-3 rounded-xl hover:bg-green-700 col-span-1 md:col-span-2 font-bold uppercase transition">
-                    <i class="fa-solid fa-plus"></i> Siyahıya Tur Əlavə Et
+                <input type="text" id="tour-title" placeholder="Turun Adı" class="p-3 border rounded-xl outline-none" required>
+                <input type="text" id="tour-price" placeholder="Qiymət (məs: 30 AZN)" class="p-3 border rounded-xl outline-none" required>
+                <input type="text" id="tour-img" placeholder="Şəkil URL" class="p-3 border rounded-xl outline-none" required>
+                <input type="text" id="tour-link" placeholder="Səhifə (məs: sheki.html)" class="p-3 border rounded-xl outline-none" required>
+                <button type="submit" class="bg-green-600 text-white px-4 py-3 rounded-xl hover:bg-green-700 col-span-1 md:col-span-2 font-black uppercase transition">
+                    YENİ TURU SİYAHIYA ƏLAVƏ ET
                 </button>
             </form>
         </div>
@@ -61,31 +61,25 @@
     <header class="hero-bg h-[500px] flex items-center justify-center text-white text-center px-4 mt-16">
         <div class="max-w-3xl">
             <h2 class="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tight">Azərbaycanı Kəşf Et</h2>
-            <p class="text-xl mb-10 font-light text-gray-200">Ən sərfəli və maraqlı turlar yalnız bizimlə</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#tours-section" class="bg-blue-600 px-10 py-4 rounded-2xl font-black shadow-xl hover:scale-105 transition-transform">TURLARA BAX</a>
-            </div>
+            <p class="text-xl mb-10 font-light text-gray-200">Ən sərfəli və professional turlar yalnız bizimlə</p>
+            <a href="#tours-section" class="bg-blue-600 px-10 py-4 rounded-2xl font-black shadow-xl hover:scale-105 transition-transform inline-block">TURLARA BAX</a>
         </div>
     </header>
 
-    <section id="tours-section" class="container mx-auto py-20 px-4">
-        <h2 class="text-3xl font-black text-center mb-2 uppercase">Aktiv Turlarımız</h2>
+    <section id="tours-section" class="container mx-auto py-20 px-6">
+        <h2 class="text-3xl font-black text-center mb-2 uppercase">Aktiv Turlar</h2>
         <div class="h-1 w-20 bg-blue-600 mx-auto mb-12"></div>
         
         <div id="tours-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
             <div class="bg-white rounded-[32px] shadow-lg border border-gray-100 overflow-hidden group">
                 <div class="tour-img-wrapper">
                     <a href="gabala.html">
-                        <img src="https://meteo.az/frq-content/plugins/announce_x1/entry/20230319124825_16854800.jpg" class="w-full h-60 object-cover">
-                        <div class="overlay-card"><span class="bg-white px-6 py-2 rounded-full font-black">ƏTRAFLI BAX</span></div>
+                        <img src="https://meteo.az/frq-content/plugins/announce_x1/entry/20230319124825_16854800.jpg">
+                        <div class="overlay-card"><span class="bg-white px-6 py-2 rounded-full font-black">BAX</span></div>
                     </a>
                 </div>
                 <div class="p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-black uppercase">Qəbələ Turu</h3>
-                        <span class="text-blue-600 font-bold">30 AZN</span>
-                    </div>
+                    <div class="flex justify-between items-center mb-4"><h3 class="text-lg font-black uppercase">Qəbələ</h3><span class="text-blue-600 font-bold">30 AZN</span></div>
                     <button onclick="orderTour('Qəbələ')" class="w-full bg-green-500 text-white py-4 rounded-2xl font-black hover:bg-green-600 transition-colors uppercase">Sifariş Et</button>
                 </div>
             </div>
@@ -93,54 +87,33 @@
             <div class="bg-white rounded-[32px] shadow-lg border border-gray-100 overflow-hidden group">
                 <div class="tour-img-wrapper">
                     <a href="sheki.html">
-                        <img src="https://azerbaijan.travel/media/az/50_sheki_khans_palace_2.jpg" class="w-full h-60 object-cover">
-                        <div class="overlay-card"><span class="bg-white px-6 py-2 rounded-full font-black">ƏTRAFLI BAX</span></div>
+                        <img src="https://azerbaijan.travel/media/az/50_sheki_khans_palace_2.jpg">
+                        <div class="overlay-card"><span class="bg-white px-6 py-2 rounded-full font-black">BAX</span></div>
                     </a>
                 </div>
                 <div class="p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-black uppercase">Şəki Turu</h3>
-                        <span class="text-blue-600 font-bold">35 AZN</span>
-                    </div>
+                    <div class="flex justify-between items-center mb-4"><h3 class="text-lg font-black uppercase">Şəki</h3><span class="text-blue-600 font-bold">35 AZN</span></div>
                     <button onclick="orderTour('Şəki')" class="w-full bg-green-500 text-white py-4 rounded-2xl font-black hover:bg-green-600 transition-colors uppercase">Sifariş Et</button>
                 </div>
             </div>
-
-            <div class="bg-white rounded-[32px] shadow-lg border border-gray-100 overflow-hidden group">
-                <div class="tour-img-wrapper">
-                    <a href="lahic.html">
-                        <img src="https://images.unsplash.com/photo-1627581534036-748981440026" class="w-full h-60 object-cover">
-                        <div class="overlay-card"><span class="bg-white px-6 py-2 rounded-full font-black">ƏTRAFLI BAX</span></div>
-                    </a>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-black uppercase">İsmayıllı-Lahıc</h3>
-                        <span class="text-blue-600 font-bold">30 AZN</span>
-                    </div>
-                    <button onclick="orderTour('Lahıc')" class="w-full bg-green-500 text-white py-4 rounded-2xl font-black hover:bg-green-600 transition-colors uppercase">Sifariş Et</button>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-12 text-center mt-20">
-        <h2 class="text-3xl font-black mb-8 italic">WESTTOUR.az</h2>
-        <div class="flex justify-center space-x-6 mb-8">
-            <a href="#" class="text-3xl hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/994509795781" class="text-3xl hover:text-green-500 transition"><i class="fab fa-whatsapp"></i></a>
+    <footer class="bg-gray-900 text-white py-12 text-center">
+        <h2 class="text-2xl font-black mb-6">WESTTOUR.az</h2>
+        <div class="flex justify-center space-x-6 mb-6">
+            <a href="#" class="text-3xl hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/994509795781" class="text-3xl hover:text-green-500"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <p class="text-gray-500">&copy; 2026 WESTTOUR AZERBAIJAN</p>
+        <p class="text-gray-500 text-sm">&copy; 2026 WestTour Azerbaijan</p>
     </footer>
 
     <div id="login-modal" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-white p-10 rounded-[40px] w-full max-w-md text-center shadow-2xl">
-            <h3 class="text-2xl font-black mb-6 uppercase tracking-tighter">Sürətli Giriş</h3>
-            <p class="text-gray-500 mb-6 text-sm">Sifariş üçün nömrənizi daxil edin</p>
-            <input type="tel" id="phone-input" placeholder="050 000 00 00" class="w-full p-5 border-2 rounded-[25px] mb-6 text-center text-xl font-bold focus:border-blue-600 outline-none transition-all">
+        <div class="bg-white p-10 rounded-[40px] w-full max-w-md text-center">
+            <h3 class="text-2xl font-black mb-6 uppercase">Qeydiyyat</h3>
+            <input type="tel" id="phone-input" placeholder="050 000 00 00" class="w-full p-5 border-2 rounded-[25px] mb-6 text-center text-xl font-bold focus:border-blue-600 outline-none">
             <button onclick="saveUser()" class="w-full bg-blue-600 text-white py-5 rounded-[25px] font-black uppercase shadow-xl hover:bg-blue-700 active:scale-95 transition-all">Daxil Ol</button>
-            <button onclick="closeModal()" class="mt-4 text-gray-400 font-bold uppercase text-xs hover:text-red-500 transition">Bağla</button>
+            <button onclick="closeModal()" class="mt-4 text-gray-400 font-bold text-xs uppercase cursor-pointer">Bağla</button>
         </div>
     </div>
 
@@ -148,13 +121,10 @@
         const myWhatsApp = "994509795781";
 
         window.onload = function() {
-            const savedPhone = localStorage.getItem('userPhone');
-            if(savedPhone) {
-                showUser(savedPhone);
-                // Admin yoxlanışı: Əgər daxil olan nömrə səninkidirsə, Admin Paneli göstər
-                if(savedPhone.includes("509795781")) {
-                    document.getElementById('admin-panel').classList.remove('hidden');
-                }
+            const saved = localStorage.getItem('userPhone');
+            if(saved) {
+                showUser(saved);
+                if(saved.includes("509795781")) document.getElementById('admin-panel').classList.remove('hidden');
             }
         };
 
@@ -165,11 +135,7 @@
             const phone = document.getElementById('phone-input').value;
             if(phone.length > 8) {
                 localStorage.setItem('userPhone', phone);
-                showUser(phone);
-                closeModal();
-                location.reload(); // Admin paneli yoxlanışı üçün səhifəni yeniləyirik
-            } else {
-                alert("Zəhmət olmasa nömrəni düzgün daxil edin.");
+                location.reload();
             }
         }
 
@@ -185,16 +151,11 @@
         }
 
         function orderTour(tourName) {
-            const userPhone = localStorage.getItem('userPhone');
-            if(!userPhone) {
-                openModal();
-                return;
-            }
-            const message = `Salam! Mən ${userPhone} nömrəsi ilə ${tourName} turuna yazılmaq istəyirəm.`;
-            window.open(`https://wa.me/${myWhatsApp}?text=${encodeURIComponent(message)}`, '_blank');
+            const phone = localStorage.getItem('userPhone');
+            if(!phone) { openModal(); return; }
+            window.open(`https://wa.me/${myWhatsApp}?text=Salam! Mən ${phone} nömrəsi ilə ${tourName} turuna yazılmaq istəyirəm.`, '_blank');
         }
 
-        // Admin Panelindən tur əlavə etmə funksiyası (Visual olaraq)
         document.getElementById('add-tour-form').onsubmit = function(e) {
             e.preventDefault();
             const title = document.getElementById('tour-title').value;
@@ -202,252 +163,20 @@
             const img = document.getElementById('tour-img').value;
             const link = document.getElementById('tour-link').value;
 
-            const newTourHTML = `
+            const html = `
                 <div class="bg-white rounded-[32px] shadow-lg border border-gray-100 overflow-hidden group">
                     <div class="tour-img-wrapper">
                         <a href="${link}">
-                            <img src="${img}" class="w-full h-60 object-cover">
-                            <div class="overlay-card"><span class="bg-white px-6 py-2 rounded-full font-black">ƏTRAFLI BAX</span></div>
+                            <img src="${img}">
+                            <div class="overlay-card"><span class="bg-white px-6 py-2 rounded-full font-black">BAX</span></div>
                         </a>
                     </div>
                     <div class="p-6">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl font-black uppercase">${title}</h3>
-                            <span class="text-blue-600 font-bold">${price}</span>
-                        </div>
+                        <div class="flex justify-between items-center mb-4"><h3 class="text-lg font-black uppercase">${title}</h3><span class="text-blue-600 font-bold">${price}</span></div>
                         <button onclick="orderTour('${title}')" class="w-full bg-green-500 text-white py-4 rounded-2xl font-black hover:bg-green-600 transition-colors uppercase">Sifariş Et</button>
                     </div>
-                </div>
-            `;
-            document.getElementById('tours-container').insertAdjacentHTML('beforeend', newTourHTML);
-            alert("Yeni tur uğurla əlavə edildi!");
-            this.reset();
-        };
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="az">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WestTour.az | Professional Turizm</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        html { scroll-behavior: smooth; }
-        .hero-bg { 
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3'); 
-            background-size: cover; background-position: center; 
-        }
-        .tour-img-wrapper { position: relative; overflow: hidden; border-radius: 24px 24px 0 0; }
-        .tour-img-wrapper img { transition: all 0.8s ease; }
-        .tour-img-wrapper:hover img { transform: scale(1.1); }
-        .overlay-card {
-            position: absolute; inset: 0; background: rgba(0,0,0,0.3);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: 0.4s;
-        }
-        .tour-img-wrapper:hover .overlay-card { opacity: 1; }
-    </style>
-</head>
-<body class="bg-gray-50 font-sans">
-
-    <nav class="bg-white shadow-md fixed w-full z-50 top-0">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-black text-blue-600 tracking-tighter cursor-pointer" onclick="window.scrollTo(0,0)">
-                WEST<span class="text-green-500">TOUR</span><span class="text-gray-400 text-sm font-normal">.az</span>
-            </h1>
-            
-            <div id="auth-section" class="flex items-center gap-4">
-                <button onclick="openModal()" id="login-btn" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold shadow-md hover:bg-blue-700 transition">
-                    <i class="fa-solid fa-right-to-bracket"></i> Giriş
-                </button>
-                <div id="user-info" class="hidden flex items-center bg-gray-100 px-4 py-2 rounded-full border">
-                    <span id="user-display" class="font-bold text-blue-700 mr-3"></span>
-                    <button onclick="logout()" class="text-red-500 font-bold hover:text-red-700">Çıxış</button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <div id="admin-panel" class="hidden container mx-auto mt-24 px-6">
-        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded shadow-lg">
-            <h2 class="text-xl font-bold text-yellow-800 mb-4"><i class="fa-solid fa-lock"></i> Admin Paneli (Yeni Tur Əlavə Et)</h2>
-            <form id="add-tour-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" id="tour-title" placeholder="Turun Adı" class="p-3 border rounded-xl outline-none focus:border-blue-500">
-                <input type="text" id="tour-price" placeholder="Qiymət (məs: 30 AZN)" class="p-3 border rounded-xl outline-none focus:border-blue-500">
-                <input type="text" id="tour-img" placeholder="Şəkil URL" class="p-3 border rounded-xl outline-none focus:border-blue-500">
-                <input type="text" id="tour-link" placeholder="Səhifə Linki (məs: gabala.html)" class="p-3 border rounded-xl outline-none focus:border-blue-500">
-                <button type="submit" class="bg-green-600 text-white px-4 py-3 rounded-xl hover:bg-green-700 col-span-1 md:col-span-2 font-bold uppercase transition">
-                    <i class="fa-solid fa-plus"></i> Siyahıya Tur Əlavə Et
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <header class="hero-bg h-[500px] flex items-center justify-center text-white text-center px-4 mt-16">
-        <div class="max-w-3xl">
-            <h2 class="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tight">Azərbaycanı Kəşf Et</h2>
-            <p class="text-xl mb-10 font-light text-gray-200">Ən sərfəli və maraqlı turlar yalnız bizimlə</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#tours-section" class="bg-blue-600 px-10 py-4 rounded-2xl font-black shadow-xl hover:scale-105 transition-transform">TURLARA BAX</a>
-            </div>
-        </div>
-    </header>
-
-    <section id="tours-section" class="container mx-auto py-20 px-4">
-        <h2 class="text-3xl font-black text-center mb-2 uppercase">Aktiv Turlarımız</h2>
-        <div class="h-1 w-20 bg-blue-600 mx-auto mb-12"></div>
-        
-        <div id="tours-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="bg-white rounded-[32px] shadow-lg border border-gray-100 overflow-hidden group">
-                <div class="tour-img-wrapper">
-                    <a href="gabala.html">
-                        <img src="https://meteo.az/frq-content/plugins/announce_x1/entry/20230319124825_16854800.jpg" class="w-full h-60 object-cover">
-                        <div class="overlay-card"><span class="bg-white px-6 py-2 rounded-full font-black">ƏTRAFLI BAX</span></div>
-                    </a>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-black uppercase">Qəbələ Turu</h3>
-                        <span class="text-blue-600 font-bold">30 AZN</span>
-                    </div>
-                    <button onclick="orderTour('Qəbələ')" class="w-full bg-green-500 text-white py-4 rounded-2xl font-black hover:bg-green-600 transition-colors uppercase">Sifariş Et</button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-[32px] shadow-lg border border-gray-100 overflow-hidden group">
-                <div class="tour-img-wrapper">
-                    <a href="sheki.html">
-                        <img src="https://azerbaijan.travel/media/az/50_sheki_khans_palace_2.jpg" class="w-full h-60 object-cover">
-                        <div class="overlay-card"><span class="bg-white px-6 py-2 rounded-full font-black">ƏTRAFLI BAX</span></div>
-                    </a>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-black uppercase">Şəki Turu</h3>
-                        <span class="text-blue-600 font-bold">35 AZN</span>
-                    </div>
-                    <button onclick="orderTour('Şəki')" class="w-full bg-green-500 text-white py-4 rounded-2xl font-black hover:bg-green-600 transition-colors uppercase">Sifariş Et</button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-[32px] shadow-lg border border-gray-100 overflow-hidden group">
-                <div class="tour-img-wrapper">
-                    <a href="lahic.html">
-                        <img src="https://images.unsplash.com/photo-1627581534036-748981440026" class="w-full h-60 object-cover">
-                        <div class="overlay-card"><span class="bg-white px-6 py-2 rounded-full font-black">ƏTRAFLI BAX</span></div>
-                    </a>
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-xl font-black uppercase">İsmayıllı-Lahıc</h3>
-                        <span class="text-blue-600 font-bold">30 AZN</span>
-                    </div>
-                    <button onclick="orderTour('Lahıc')" class="w-full bg-green-500 text-white py-4 rounded-2xl font-black hover:bg-green-600 transition-colors uppercase">Sifariş Et</button>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <footer class="bg-gray-900 text-white py-12 text-center mt-20">
-        <h2 class="text-3xl font-black mb-8 italic">WESTTOUR.az</h2>
-        <div class="flex justify-center space-x-6 mb-8">
-            <a href="#" class="text-3xl hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/994509795781" class="text-3xl hover:text-green-500 transition"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        <p class="text-gray-500">&copy; 2026 WESTTOUR AZERBAIJAN</p>
-    </footer>
-
-    <div id="login-modal" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-white p-10 rounded-[40px] w-full max-w-md text-center shadow-2xl">
-            <h3 class="text-2xl font-black mb-6 uppercase tracking-tighter">Sürətli Giriş</h3>
-            <p class="text-gray-500 mb-6 text-sm">Sifariş üçün nömrənizi daxil edin</p>
-            <input type="tel" id="phone-input" placeholder="050 000 00 00" class="w-full p-5 border-2 rounded-[25px] mb-6 text-center text-xl font-bold focus:border-blue-600 outline-none transition-all">
-            <button onclick="saveUser()" class="w-full bg-blue-600 text-white py-5 rounded-[25px] font-black uppercase shadow-xl hover:bg-blue-700 active:scale-95 transition-all">Daxil Ol</button>
-            <button onclick="closeModal()" class="mt-4 text-gray-400 font-bold uppercase text-xs hover:text-red-500 transition">Bağla</button>
-        </div>
-    </div>
-
-    <script>
-        const myWhatsApp = "994509795781";
-
-        window.onload = function() {
-            const savedPhone = localStorage.getItem('userPhone');
-            if(savedPhone) {
-                showUser(savedPhone);
-                // Admin yoxlanışı: Əgər daxil olan nömrə səninkidirsə, Admin Paneli göstər
-                if(savedPhone.includes("509795781")) {
-                    document.getElementById('admin-panel').classList.remove('hidden');
-                }
-            }
-        };
-
-        function openModal() { document.getElementById('login-modal').classList.remove('hidden'); }
-        function closeModal() { document.getElementById('login-modal').classList.add('hidden'); }
-
-        function saveUser() {
-            const phone = document.getElementById('phone-input').value;
-            if(phone.length > 8) {
-                localStorage.setItem('userPhone', phone);
-                showUser(phone);
-                closeModal();
-                location.reload(); // Admin paneli yoxlanışı üçün səhifəni yeniləyirik
-            } else {
-                alert("Zəhmət olmasa nömrəni düzgün daxil edin.");
-            }
-        }
-
-        function showUser(phone) {
-            document.getElementById('login-btn').classList.add('hidden');
-            document.getElementById('user-info').classList.remove('hidden');
-            document.getElementById('user-display').innerText = phone;
-        }
-
-        function logout() {
-            localStorage.removeItem('userPhone');
-            location.reload();
-        }
-
-        function orderTour(tourName) {
-            const userPhone = localStorage.getItem('userPhone');
-            if(!userPhone) {
-                openModal();
-                return;
-            }
-            const message = `Salam! Mən ${userPhone} nömrəsi ilə ${tourName} turuna yazılmaq istəyirəm.`;
-            window.open(`https://wa.me/${myWhatsApp}?text=${encodeURIComponent(message)}`, '_blank');
-        }
-
-        // Admin Panelindən tur əlavə etmə funksiyası (Visual olaraq)
-        document.getElementById('add-tour-form').onsubmit = function(e) {
-            e.preventDefault();
-            const title = document.getElementById('tour-title').value;
-            const price = document.getElementById('tour-price').value;
-            const img = document.getElementById('tour-img').value;
-            const link = document.getElementById('tour-link').value;
-
-            const newTourHTML = `
-                <div class="bg-white rounded-[32px] shadow-lg border border-gray-100 overflow-hidden group">
-                    <div class="tour-img-wrapper">
-                        <a href="${link}">
-                            <img src="${img}" class="w-full h-60 object-cover">
-                            <div class="overlay-card"><span class="bg-white px-6 py-2 rounded-full font-black">ƏTRAFLI BAX</span></div>
-                        </a>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl font-black uppercase">${title}</h3>
-                            <span class="text-blue-600 font-bold">${price}</span>
-                        </div>
-                        <button onclick="orderTour('${title}')" class="w-full bg-green-500 text-white py-4 rounded-2xl font-black hover:bg-green-600 transition-colors uppercase">Sifariş Et</button>
-                    </div>
-                </div>
-            `;
-            document.getElementById('tours-container').insertAdjacentHTML('beforeend', newTourHTML);
-            alert("Yeni tur uğurla əlavə edildi!");
+                </div>`;
+            document.getElementById('tours-container').insertAdjacentHTML('beforeend', html);
             this.reset();
         };
     </script>
