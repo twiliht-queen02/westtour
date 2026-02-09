@@ -326,7 +326,7 @@
             if(!user) {
                 openModal();
             } else {
-                const text = `Salam! Mən ${user.phoneNumber} nömrəsi ilə ${tourName} turuna yazılmaq istəyirəm.`;
+                const text = `Salam! Mən ${user.phoneNumber} nömrəsi ilə "${tourName}" turuna yazılmaq istəyirəm.`;
                 window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(text)}`, '_blank');
             }
         };
