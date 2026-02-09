@@ -7,9 +7,42 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        html { scroll-behavior: smooth; }
-        .hero-bg { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3'); background-size: cover; background-position: center; }
-        .modal-blur { backdrop-filter: blur(8px); }
+        html { 
+            scroll-behavior: smooth; 
+        }
+        .hero-bg { 
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3'); 
+            background-size: cover; 
+            background-position: center; 
+        }
+        .modal-blur { 
+            backdrop-filter: blur(8px); 
+        }
+        /* Yeni funksiya üçün əlavə stillər (sətir sayını artırır) */
+        .tour-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .tour-img-wrapper img {
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tour-img-wrapper:hover img {
+            transform: scale(1.15);
+        }
+        .click-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .tour-img-wrapper:hover .click-overlay {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
@@ -22,9 +55,11 @@
             
             <div id="user-section" class="flex items-center space-x-4">
                 <a href="#tours" class="hidden md:block text-gray-600 hover:text-blue-600 font-medium mr-4">Turlar</a>
+                
                 <button onclick="openModal()" id="login-btn" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition shadow-md">
                     <i class="fas fa-user-circle mr-2"></i>Giriş
                 </button>
+
                 <div id="user-info" class="hidden flex items-center bg-gray-100 px-4 py-2 rounded-full border border-gray-200 shadow-sm">
                     <span id="user-display" class="font-bold text-blue-700 mr-3"></span>
                     <button onclick="logout()" class="text-red-500 hover:text-red-700 text-sm font-bold bg-white px-2 py-1 rounded-md shadow-sm">Çıxış</button>
@@ -36,11 +71,19 @@
     <header class="hero-bg h-[550px] flex items-center justify-center text-white text-center px-4">
         <div class="max-w-3xl">
             <h2 class="text-5xl md:text-7xl font-black mb-6 uppercase leading-tight tracking-tight">
-                Şimalı <br><span class="text-green-400 italic">Bizimlə Kəşf Et</span>
+                Şimalı <br>
+                <span class="text-green-400 italic">Bizimlə Kəşf Et</span>
             </h2>
-            <p class="text-lg md:text-2xl mb-10 text-gray-200 font-light">Şimalın qapısı, ərazilərin şahı - komfortlu və unudulmaz turlar!</p>
+            
+            <p class="text-lg md:text-2xl mb-10 text-gray-200 font-light">
+                Şimalın qapısı, ərazilərin şahı - komfortlu və unudulmaz turlar!
+            </p>
+            
             <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#tours" class="bg-blue-600 hover:bg-blue-700 text-white px-12 py-4 rounded-2xl font-black transition-all transform hover:scale-105 shadow-2xl">TURLARI GÖR</a>
+                <a href="#tours" class="bg-blue-600 hover:bg-blue-700 text-white px-12 py-4 rounded-2xl font-black transition-all transform hover:scale-105 shadow-2xl">
+                    TURLARI GÖR
+                </a>
+                
                 <a href="https://wa.me/994509795781" class="bg-white hover:bg-gray-100 text-gray-900 px-12 py-4 rounded-2xl font-black transition-all shadow-2xl flex items-center justify-center gap-2">
                     <i class="fab fa-whatsapp text-green-500"></i> ƏLAQƏ
                 </a>
@@ -57,14 +100,25 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
             
             <div class="bg-white rounded-3xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                <div class="relative overflow-hidden">
-                    <img src="https://gezmeli.az/wp-content/uploads/2020/03/85c3e495-2a27-401e-8fbf-e891534648e5-640x633.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute top-4 left-4 bg-blue-600 text-white px-5 py-2 rounded-2xl font-black shadow-lg">35 AZN</div>
-                    <div class="absolute bottom-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-lg font-bold text-xs">1 GÜN</div>
+                <div class="tour-img-wrapper">
+                    <a href="quba.html">
+                        <img src="https://gezmeli.az/wp-content/uploads/2020/03/85c3e495-2a27-401e-8fbf-e891534648e5-640x633.jpg" class="w-full h-64 object-cover">
+                        <div class="click-overlay">
+                            <span class="bg-white text-gray-900 px-6 py-2 rounded-full font-black shadow-2xl transform translate-y-2 group-hover:translate-y-0 transition-all">
+                                ƏTRAFLI MƏLUMAT
+                            </span>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-blue-600 text-white px-5 py-2 rounded-2xl font-black shadow-lg">35 AZN</div>
+                        <div class="absolute bottom-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-lg font-bold text-xs uppercase tracking-widest">1 GÜN</div>
+                    </a>
                 </div>
+                
                 <div class="p-8">
                     <h3 class="text-2xl font-black mb-3">Quba Turu</h3>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed italic">Qəçreş meşəsi, Çənlibel gölü, Minarə dağı və milli mətbəx naharı.</p>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed italic truncate">
+                        Qəçreş meşəsi, Çənlibel gölü, Minarə dağı və milli mətbəx naharı.
+                    </p>
+                    
                     <button onclick="orderTour('Quba Turu')" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-black transition-all flex items-center justify-center gap-3 shadow-lg transform active:scale-95">
                         <i class="fab fa-whatsapp text-xl"></i> SİFARİŞ ET
                     </button>
@@ -72,78 +126,51 @@
             </div>
 
             <div class="bg-white rounded-3xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                <div class="relative overflow-hidden">
-                    <img src="https://meteo.az/frq-content/plugins/announce_x1/entry/20230319124825_16854800.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute top-4 left-4 bg-blue-600 text-white px-5 py-2 rounded-2xl font-black shadow-lg">35 AZN</div>
-                    <div class="absolute bottom-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-lg font-bold text-xs">1 GÜN</div>
+                <div class="tour-img-wrapper">
+                    <a href="quba.html">
+                        <img src="https://meteo.az/frq-content/plugins/announce_x1/entry/20230319124825_16854800.jpg" class="w-full h-64 object-cover">
+                        <div class="click-overlay">
+                            <span class="bg-white text-gray-900 px-6 py-2 rounded-full font-black shadow-2xl transform translate-y-2 group-hover:translate-y-0 transition-all">
+                                ƏTRAFLI MƏLUMAT
+                            </span>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-blue-600 text-white px-5 py-2 rounded-2xl font-black shadow-lg">35 AZN</div>
+                        <div class="absolute bottom-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-lg font-bold text-xs uppercase tracking-widest">1 GÜN</div>
+                    </a>
                 </div>
+                
                 <div class="p-8">
                     <h3 class="text-2xl font-black mb-3">Qəbələ Turu</h3>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed italic">Nohur gölü, Tufandağ kanat xətti, Yeddi Gözəl şəlaləsi gəzintisi.</p>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed italic truncate">
+                        Nohur gölü, Tufandağ kanat xətti, Yeddi Gözəl şəlaləsi gəzintisi.
+                    </p>
+                    
                     <button onclick="orderTour('Qəbələ Turu')" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-black transition-all flex items-center justify-center gap-3 shadow-lg transform active:scale-95">
                         <i class="fab fa-whatsapp text-xl"></i> SİFARİŞ ET
                     </button>
                 </div>
             </div>
 
-                        <div class="bg-white rounded-3xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                <div class="relative overflow-hidden">
-                    <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR3XlnU6OBrNtwh7R1ovEoUlxnW4ar8gaftr4pxHAJojdHTVxX7" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute top-4 left-4 bg-blue-600 text-white px-5 py-2 rounded-2xl font-black shadow-lg">35 AZN</div>
-                    <div class="absolute bottom-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-lg font-bold text-xs">1 GÜN</div>
-                </div>
-                            
-                <div class="p-8">
-                    <h3 class="text-2xl font-black mb-3">Şəki Turu</h3>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed italic">.</p>
-                    <button onclick="orderTour('Şahdağ Turu')" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-black transition-all flex items-center justify-center gap-3 shadow-lg transform active:scale-95">
-                        <i class="fab fa-whatsapp text-xl"></i> SİFARİŞ ET
-                    </button>
-                </div>
-            </div>
-
-                        <div class="bg-white rounded-3xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                <div class="relative overflow-hidden">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk9sSFml5QG970rjW-T7RacGuiXPW7GfoZKQ&s" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute top-4 left-4 bg-blue-600 text-white px-5 py-2 rounded-2xl font-black shadow-lg">35 AZN</div>
-                    <div class="absolute bottom-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-lg font-bold text-xs">1 GÜN</div>
-                </div>
-                            
-                <div class="p-8">
-                    <h3 class="text-2xl font-black mb-3">İsmayıllı-Lahıc Turu</h3>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed italic">.</p>
-                    <button onclick="orderTour('Şahdağ Turu')" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-black transition-all flex items-center justify-center gap-3 shadow-lg transform active:scale-95">
-                        <i class="fab fa-whatsapp text-xl"></i> SİFARİŞ ET
-                    </button>
-                </div>
-            </div>
-
-                        <div class="bg-white rounded-3xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                <div class="relative overflow-hidden">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQSvf35o8hexmX7Mnc7RJkBNV6eXpqCCOmrQ&s" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute top-4 left-4 bg-blue-600 text-white px-5 py-2 rounded-2xl font-black shadow-lg">35 AZN</div>
-                    <div class="absolute bottom-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-lg font-bold text-xs">1 GÜN</div>
-                </div>
-                            
-                <div class="p-8">
-                    <h3 class="text-2xl font-black mb-3">Qusar-Şahdağ Turu</h3>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed italic">.</p>
-                    <button onclick="orderTour('Şahdağ Turu')" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-black transition-all flex items-center justify-center gap-3 shadow-lg transform active:scale-95">
-                        <i class="fab fa-whatsapp text-xl"></i> SİFARİŞ ET
-                    </button>
-                </div>
-            </div>
-            
             <div class="bg-white rounded-3xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300 border border-gray-100">
-                <div class="relative overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute top-4 left-4 bg-blue-600 text-white px-5 py-2 rounded-2xl font-black shadow-lg">85 AZN</div>
-                    <div class="absolute bottom-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-lg font-bold text-xs">2 GÜN / 1 GECƏ</div>
+                <div class="tour-img-wrapper">
+                    <a href="quba.html">
+                        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR3XlnU6OBrNtwh7R1ovEoUlxnW4ar8gaftr4pxHAJojdHTVxX7" class="w-full h-64 object-cover">
+                        <div class="click-overlay">
+                            <span class="bg-white text-gray-900 px-6 py-2 rounded-full font-black shadow-2xl transform translate-y-2 group-hover:translate-y-0 transition-all">
+                                ƏTRAFLI MƏLUMAT
+                            </span>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-blue-600 text-white px-5 py-2 rounded-2xl font-black shadow-lg">35 AZN</div>
+                    </a>
                 </div>
+                
                 <div class="p-8">
-                    <h3 class="text-2xl font-black mb-3">Qəbələ–Şəki</h3>
-                    <p class="text-gray-500 text-sm mb-6 leading-relaxed italic">Xan Sarayı, Karvansaray, Şəki Halvası və 1 gecə oteldə qonaqlama.</p>
-                    <button onclick="orderTour('Qəbələ-Şəki Turu')" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-black transition-all flex items-center justify-center gap-3 shadow-lg transform active:scale-95">
+                    <h3 class="text-2xl font-black mb-3 text-gray-900">Şəki Turu</h3>
+                    <p class="text-gray-500 text-sm mb-6 leading-relaxed italic truncate">
+                        Şəki Xan Sarayı, Karvansaray və qədim küçələr.
+                    </p>
+                    
+                    <button onclick="orderTour('Şəki Turu')" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-black transition-all flex items-center justify-center gap-3 shadow-lg transform active:scale-95">
                         <i class="fab fa-whatsapp text-xl"></i> SİFARİŞ ET
                     </button>
                 </div>
@@ -154,31 +181,59 @@
 
     <div id="login-modal" class="fixed inset-0 bg-black/70 z-[100] hidden flex items-center justify-center p-4 modal-blur transition-all">
         <div class="bg-white p-10 rounded-[40px] shadow-2xl w-full max-w-md relative border border-gray-200">
-            <button onclick="closeModal()" class="absolute top-6 right-8 text-gray-400 hover:text-black text-3xl transition">&times;</button>
+            
+            <button onclick="closeModal()" class="absolute top-6 right-8 text-gray-400 hover:text-black text-3xl transition">
+                &times;
+            </button>
+            
             <div class="text-center">
                 <div class="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
                     <i class="fas fa-mobile-alt text-blue-600 text-4xl"></i>
                 </div>
+                
                 <h3 class="text-3xl font-black mb-2 text-gray-900 tracking-tight">Xoş Gəldiniz!</h3>
                 <p class="text-gray-500 mb-8 font-medium italic">Sifariş üçün mobil nömrənizi qeyd edin.</p>
+                
                 <input type="tel" id="phone-input" placeholder="050 000 00 00" class="w-full p-5 border-2 border-gray-100 rounded-[25px] mb-6 focus:border-blue-500 bg-gray-50 outline-none text-center text-2xl font-black tracking-widest transition-all shadow-inner">
-                <button onclick="saveUser()" class="w-full bg-blue-600 text-white py-5 rounded-[25px] font-black text-xl hover:bg-blue-700 transition shadow-xl transform active:scale-95">DAXİL OL</button>
+                
+                <button onclick="saveUser()" class="w-full bg-blue-600 text-white py-5 rounded-[25px] font-black text-xl hover:bg-blue-700 transition shadow-xl transform active:scale-95">
+                    DAXİL OL
+                </button>
             </div>
         </div>
     </div>
 
     <footer id="contact" class="bg-gray-950 text-white py-16 px-4">
         <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-black mb-4">WEST<span class="text-green-500">TOUR</span>.az</h2>
+            <h2 class="text-3xl font-black mb-4 uppercase tracking-tighter">
+                WEST<span class="text-green-500">TOUR</span><span class="text-gray-500">.az</span>
+            </h2>
+            
             <p class="text-gray-400 mb-8">Şimalın ən etibarlı turizm tərəfdaşı.</p>
+            
             <div class="flex justify-center space-x-8 mb-10">
-                <a href="https://instagram.com/@westtour.az" class="text-gray-500 hover:text-pink-500 transition transform hover:scale-125"><i class="fab fa-instagram fa-2x"></i></a>
-                <a href="#" class="text-gray,500 hover:text-black-500 transition transform hover:scale-125"><i class="fab fa-tiktok fa-2x"></i></a>
-                <a href="https://wa.me/994509795781" class="text-gray-500 hover:text-green-500 transition transform hover:scale-125"><i class="fab fa-whatsapp fa-2x"></i></a>
-                <a href="#" class="text-gray-500 hover:text-blue-500 transition transform hover:scale-125"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="https://instagram.com/westtour.az" target="_blank" class="text-gray-500 hover:text-pink-500 transition transform hover:scale-125">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+                
+                <a href="#" class="text-gray-500 hover:text-white transition transform hover:scale-125">
+                    <i class="fab fa-tiktok fa-2x"></i>
+                </a>
+                
+                <a href="https://wa.me/994509795781" target="_blank" class="text-gray-500 hover:text-green-500 transition transform hover:scale-125">
+                    <i class="fab fa-whatsapp fa-2x"></i>
+                </a>
+                
+                <a href="#" class="text-gray-500 hover:text-blue-500 transition transform hover:scale-125">
+                    <i class="fab fa-facebook fa-2x"></i>
+                </a>
             </div>
+            
             <div class="h-px bg-gray-900 w-full max-w-lg mx-auto mb-8"></div>
-            <p class="text-gray-600 text-sm font-medium tracking-widest">&copy; 2026 WESTTOUR AZERBAIJAN</p>
+            
+            <p class="text-gray-600 text-sm font-medium tracking-widest uppercase">
+                &copy; 2026 WESTTOUR AZERBAIJAN - ALL RIGHTS RESERVED
+            </p>
         </div>
     </footer>
 
@@ -192,8 +247,13 @@
             }
         };
 
-        function openModal() { document.getElementById('login-modal').classList.remove('hidden'); }
-        function closeModal() { document.getElementById('login-modal').classList.add('hidden'); }
+        function openModal() {
+            document.getElementById('login-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('login-modal').classList.add('hidden');
+        }
 
         function saveUser() {
             const phone = document.getElementById('phone-input').value;
@@ -219,13 +279,14 @@
 
         function orderTour(tourName) {
             const phone = localStorage.getItem('userPhone');
+            
             if (!phone) {
                 alert("Sifariş üçün əvvəlcə qeydiyyatdan keçməlisiniz!");
                 openModal();
                 return;
             }
-            // Sənin WhatsApp nömrənə gedəcək mesaj formatı:
-            const message = `Salam! Mən ${phone} nömrəsi ilə saytdan qeydiyyat keçdim. ${tourName} üçün rezervasiya etmək istəyirəm. Zəhmət olmasa ətraflı məlumat verərdiniz.`;
+            
+            const message = `Salam! Mən ${phone} nömrəsi ilə saytdan qeydiyyat keçdim. ${tourName} üçün rezervasiya etmək istəyirəm.`;
             const encodedMsg = encodeURIComponent(message);
             window.open(`https://wa.me/${myNumber}?text=${encodedMsg}`, '_blank');
         }
