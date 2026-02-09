@@ -1,31 +1,66 @@
-<!DOCTYPE html>
-<html lang="az">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qəbələ Turu | WestTour.az</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="bg-gray-50 pb-32">
-    <div class="fixed top-5 left-5 z-50">
-        <a href="index.html" class="bg-white p-3 rounded-full shadow-lg"><i class="fas fa-arrow-left"></i></a>
+<div class="bg-white rounded-[32px] shadow-lg border border-gray-100 overflow-hidden group hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative">
+    
+    <div class="tour-img-wrapper relative h-64 overflow-hidden">
+        <a href="gabala.html" class="block h-full w-full">
+            <img src="https://meteo.az/frq-content/plugins/announce_x1/entry/20230319124825_16854800.jpg" 
+                 alt="Qəbələ Turu"
+                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-in-out">
+            
+            <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center">
+                <span class="bg-white text-blue-600 px-8 py-3 rounded-full font-black shadow-2xl transform scale-50 group-hover:scale-100 transition-transform duration-500 uppercase tracking-tighter">
+                    Proqrama Bax
+                </span>
+                <p class="text-white text-[10px] mt-3 font-bold uppercase tracking-[3px] opacity-0 group-hover:opacity-100 transition-opacity delay-200">
+                    WestTour Azerbaijan
+                </p>
+            </div>
+
+            <div class="absolute top-5 left-5 z-10">
+                <span class="bg-blue-600/90 backdrop-blur-md text-white px-4 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg border border-white/20">
+                    Populyar
+                </span>
+            </div>
+
+            <div class="absolute top-5 right-5 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div class="bg-white/20 backdrop-blur-md p-2 rounded-full text-white hover:bg-red-500 transition-colors">
+                    <i class="far fa-heart text-sm"></i>
+                </div>
+            </div>
+        </a>
     </div>
-    <img src="https://meteo.az/frq-content/plugins/announce_x1/entry/20230319124825_16854800.jpg" class="w-full h-80 object-cover shadow-lg">
-    <div class="p-6">
-        <h1 class="text-3xl font-black uppercase">Qəbələ Turu</h1>
-        <p class="text-blue-600 font-black text-2xl mt-2">35 AZN</p>
-        <div class="mt-8 space-y-4">
-            <h3 class="font-bold border-b pb-2">TUR PROQRAMI:</h3>
-            <p>• Nohur gölü gəzintisi</p>
-            <p>• Tufandağ kanat xətti</p>
-            <p>• Yeddi Gözəl şəlaləsi</p>
-            <p>• Qəbələnd Əyləncə mərkəzi</p>
+
+    <div class="p-8 relative">
+        <div class="flex items-center gap-4 mb-4">
+            <div class="flex items-center gap-1 text-[10px] font-bold text-gray-400 uppercase">
+                <i class="fas fa-clock text-blue-500"></i> 1 Gün
+            </div>
+            <div class="flex items-center gap-1 text-[10px] font-bold text-gray-400 uppercase">
+                <i class="fas fa-map-marker-alt text-green-500"></i> Qəbələ
+            </div>
+            <div class="flex items-center gap-1 text-[10px] font-bold text-gray-400 uppercase">
+                <i class="fas fa-shield-alt text-purple-500"></i> Sığortalı
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <h3 class="text-2xl font-black text-gray-800 uppercase tracking-tighter group-hover:text-blue-600 transition-colors duration-300">
+                Qəbələ Turu
+            </h3>
+            <div class="w-10 h-1 bg-blue-600 mt-2 rounded-full group-hover:w-20 transition-all duration-500"></div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+            <button onclick="orderTour('Qəbələ')" 
+                    class="group/btn relative overflow-hidden w-full bg-green-500 text-white py-4 rounded-2xl font-black uppercase tracking-widest shadow-[0_10px_20px_rgba(34,197,94,0.3)] hover:shadow-[0_15px_25px_rgba(34,197,94,0.4)] transition-all active:scale-95">
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-lg"></i> SİFARİŞ ET
+                </span>
+                <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:animate-[shimmer_1.5s_infinite]"></div>
+            </button>
+            
+            <p class="text-[9px] text-center text-gray-400 font-bold uppercase tracking-widest">
+                Sürətli bronlaşdırma mövcuddur
+            </p>
         </div>
     </div>
-    <div class="fixed bottom-0 left-0 right-0 bg-white p-4 flex gap-4 shadow-2xl border-t">
-        <a href="tel:+994509795781" class="flex-1 bg-blue-600 text-white text-center py-4 rounded-2xl font-black">ZƏNG ET</a>
-        <a href="https://wa.me/994509795781" class="flex-1 bg-green-500 text-white text-center py-4 rounded-2xl font-black">WHATSAPP</a>
-    </div>
-</body>
-</html>
+</div>
