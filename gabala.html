@@ -1,66 +1,161 @@
-<div class="bg-white rounded-[32px] shadow-lg border border-gray-100 overflow-hidden group hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 relative">
-    
-    <div class="tour-img-wrapper relative h-64 overflow-hidden">
-        <a href="gabala.html" class="block h-full w-full">
-            <img src="https://meteo.az/frq-content/plugins/announce_x1/entry/20230319124825_16854800.jpg" 
-                 alt="Qəbələ Turu"
-                 class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-in-out">
-            
-            <div class="overlay-card absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center">
-                <span class="bg-white text-blue-600 px-8 py-3 rounded-full font-black shadow-2xl transform scale-50 group-hover:scale-100 transition-transform duration-500 uppercase tracking-tighter">
-                    Proqrama Bax
-                </span>
-                <p class="text-white text-[10px] mt-3 font-bold uppercase tracking-[3px] opacity-0 group-hover:opacity-100 transition-opacity delay-200">
-                    WestTour Azerbaijan
-                </p>
-            </div>
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qəbələ Turu | WestTour.az</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .bottom-nav { 
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.15); 
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 pb-32 font-sans">
 
-            <div class="absolute top-5 left-5 z-10">
-                <span class="bg-blue-600/90 backdrop-blur-md text-white px-4 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg border border-white/20">
-                    Populyar
-                </span>
-            </div>
-
-            <div class="absolute top-5 right-5 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div class="bg-white/20 backdrop-blur-md p-2 rounded-full text-white hover:bg-red-500 transition-colors">
-                    <i class="far fa-heart text-sm"></i>
-                </div>
-            </div>
+    <div class="fixed top-5 left-0 right-0 z-50 px-5 flex justify-between items-center">
+        <a href="index.html" class="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg text-gray-800 hover:bg-blue-600 hover:text-white transition-all">
+            <i class="fas fa-arrow-left"></i>
         </a>
+        <button class="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg text-gray-800">
+            <i class="fas fa-share-alt"></i>
+        </button>
     </div>
 
-    <div class="p-8 relative">
-        <div class="flex items-center gap-4 mb-4">
-            <div class="flex items-center gap-1 text-[10px] font-bold text-gray-400 uppercase">
-                <i class="fas fa-clock text-blue-500"></i> 1 Gün
+    <div class="w-full h-[450px] relative overflow-hidden">
+        <img src="https://meteo.az/frq-content/plugins/announce_x1/entry/20230319124825_16854800.jpg" class="w-full h-full object-cover shadow-inner">
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-8">
+            <div class="flex items-center gap-2 mb-2">
+                <span class="bg-blue-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Ən Çox Satılan</span>
+                <span class="bg-green-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Hər Həftəsonu</span>
             </div>
-            <div class="flex items-center gap-1 text-[10px] font-bold text-gray-400 uppercase">
-                <i class="fas fa-map-marker-alt text-green-500"></i> Qəbələ
+            <h1 class="text-white text-4xl font-black uppercase tracking-tighter">Qəbələ Turu</h1>
+            <p class="text-yellow-400 font-bold text-xl mt-1">30 - 40 AZN <span class="text-gray-300 text-sm font-normal">/ nəfər sayı asılı olaraq</span></p>
+        </div>
+    </div>
+
+    <div class="container mx-auto max-w-2xl px-5 -mt-6 relative z-10">
+        
+        <div class="grid grid-cols-3 gap-3 mb-6">
+            <div class="bg-white p-4 rounded-3xl shadow-sm text-center border border-gray-100">
+                <i class="fas fa-calendar-day text-blue-600 mb-2"></i>
+                <p class="text-[10px] text-gray-400 font-bold uppercase">Müddət</p>
+                <p class="text-sm font-black text-gray-800">1 GÜN</p>
             </div>
-            <div class="flex items-center gap-1 text-[10px] font-bold text-gray-400 uppercase">
-                <i class="fas fa-shield-alt text-purple-500"></i> Sığortalı
+            <div class="bg-white p-4 rounded-3xl shadow-sm text-center border border-gray-100">
+                <i class="fas fa-users text-blue-600 mb-2"></i>
+                <p class="text-[10px] text-gray-400 font-bold uppercase">Nəfər</p>
+                <p class="text-sm font-black text-gray-800">6 - 48</p>
+            </div>
+            <div class="bg-white p-4 rounded-3xl shadow-sm text-center border border-gray-100">
+                <i class="fas fa-map-marker-alt text-blue-600 mb-2"></i>
+                <p class="text-[10px] text-gray-400 font-bold uppercase">Məkan</p>
+                <p class="text-sm font-black text-gray-800">QƏBƏLƏ</p>
             </div>
         </div>
 
-        <div class="mb-6">
-            <h3 class="text-2xl font-black text-gray-800 uppercase tracking-tighter group-hover:text-blue-600 transition-colors duration-300">
-                Qəbələ Turu
+        <div class="bg-white p-6 rounded-[40px] shadow-sm mb-6 border border-gray-100 overflow-hidden relative">
+            <div class="absolute top-0 right-0 bg-blue-600 text-white px-6 py-2 rounded-bl-[30px] font-black text-[10px] uppercase">
+                Qrup Endirimi
+            </div>
+            <h3 class="text-xl font-black mb-6 flex items-center gap-3">
+                <i class="fas fa-tags text-blue-600"></i> Qiymət Paketləri
             </h3>
-            <div class="w-10 h-1 bg-blue-600 mt-2 rounded-full group-hover:w-20 transition-all duration-500"></div>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                    <span class="font-bold text-gray-700">6 - 10 nəfərlik</span>
+                    <span class="text-gray-900 font-black text-lg">40 AZN</span>
+                </div>
+                <div class="flex justify-between items-center bg-blue-50/50 p-4 rounded-2xl border border-blue-100">
+                    <span class="font-bold text-gray-700">18 - 35 nəfərlik</span>
+                    <span class="text-blue-700 font-black text-lg">35 AZN</span>
+                </div>
+                <div class="flex justify-between items-center bg-green-50/50 p-4 rounded-2xl border border-green-100">
+                    <div class="flex flex-col">
+                        <span class="font-bold text-gray-700 text-sm">36 - 48 nəfərlik</span>
+                        <span class="text-[10px] text-green-600 font-bold uppercase">Ən Sərfəli</span>
+                    </div>
+                    <span class="text-green-700 font-black text-xl">30 AZN</span>
+                </div>
+            </div>
         </div>
 
-        <div class="flex flex-col gap-3">
-            <button onclick="orderTour('Qəbələ')" 
-                    class="group/btn relative overflow-hidden w-full bg-green-500 text-white py-4 rounded-2xl font-black uppercase tracking-widest shadow-[0_10px_20px_rgba(34,197,94,0.3)] hover:shadow-[0_15px_25px_rgba(34,197,94,0.4)] transition-all active:scale-95">
-                <span class="relative z-10 flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp text-lg"></i> SİFARİŞ ET
-                </span>
-                <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:animate-[shimmer_1.5s_infinite]"></div>
-            </button>
-            
-            <p class="text-[9px] text-center text-gray-400 font-bold uppercase tracking-widest">
-                Sürətli bronlaşdırma mövcuddur
+        <div class="bg-white p-8 rounded-[40px] shadow-sm mb-6 border border-gray-100">
+            <h3 class="text-xl font-black mb-6 flex items-center gap-3">
+                <i class="fas fa-list-ul text-blue-600"></i> Gəziləcək Yerlər
+            </h3>
+            <ul class="space-y-6">
+                <li class="flex gap-4">
+                    <div class="flex-none w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 font-black text-sm">08:00</div>
+                    <div>
+                        <p class="font-bold text-gray-900 leading-tight">Bakıdan çıxış</p>
+                        <p class="text-xs text-gray-500 mt-1 italic">Təyin olunmuş nöqtədən hərəkət.</p>
+                    </div>
+                </li>
+                <li class="flex gap-4">
+                    <div class="flex-none w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 font-black text-sm">11:00</div>
+                    <div>
+                        <p class="font-bold text-gray-900 leading-tight">Nohur gölü</p>
+                        <p class="text-xs text-gray-500 mt-1 italic">Göl ətrafında gəzinti və qayıq turu imkanı.</p>
+                    </div>
+                </li>
+                <li class="flex gap-4">
+                    <div class="flex-none w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 font-black text-sm">13:00</div>
+                    <div>
+                        <p class="font-bold text-gray-900 leading-tight">Tufandağ Yay-Qış Kompleksi</p>
+                        <p class="text-xs text-gray-500 mt-1 italic">Kanatla dağların zirvəsinə səyahət.</p>
+                    </div>
+                </li>
+                <li class="flex gap-4">
+                    <div class="flex-none w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 font-black text-sm">16:00</div>
+                    <div>
+                        <p class="font-bold text-gray-900 leading-tight">Qəbələnd Əyləncə Mərkəzi</p>
+                        <p class="text-xs text-gray-500 mt-1 italic">Atraksionlar və maraqlı vaxt keçirmək üçün sərbəst vaxt.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="bg-white p-8 rounded-[40px] shadow-sm mb-6 border border-gray-100">
+            <h3 class="text-xl font-black mb-6">Daxil olan xidmətlər</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="flex items-center gap-3 text-sm font-bold text-gray-700 bg-gray-50 p-3 rounded-2xl">
+                    <i class="fas fa-bus text-green-500"></i> Komfortlu Avtobus
+                </div>
+                <div class="flex items-center gap-3 text-sm font-bold text-gray-700 bg-gray-50 p-3 rounded-2xl">
+                    <i class="fas fa-user-tie text-green-500"></i> Bələdçi xidməti
+                </div>
+                <div class="flex items-center gap-3 text-sm font-bold text-gray-700 bg-gray-50 p-3 rounded-2xl">
+                    <i class="fas fa-camera text-green-500"></i> Fotosessiya
+                </div>
+                <div class="flex items-center gap-3 text-sm font-bold text-gray-700 bg-gray-50 p-3 rounded-2xl">
+                    <i class="fas fa-shield-alt text-green-500"></i> Sığorta
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-blue-50 border-2 border-blue-100 p-6 rounded-[30px] mb-10">
+            <h4 class="font-black text-blue-800 flex items-center gap-2 mb-2 italic uppercase text-xs">
+                <i class="fas fa-info-circle"></i> Əlavə:
+            </h4>
+            <p class="text-blue-900 text-xs leading-relaxed font-medium">
+                Səhər yeməyi qiymətə daxildir. Kanat və atraksion biletləri qiymətə daxil edilməyib.
             </p>
         </div>
     </div>
-</div>
+
+    <div class="fixed bottom-0 left-0 right-0 bg-white/95 p-4 bottom-nav z-[100] border-t border-gray-100">
+        <div class="max-w-md mx-auto flex gap-4">
+            <a href="tel:+994509795781" class="flex-1 bg-blue-600 text-white flex items-center justify-center gap-3 py-5 rounded-[25px] font-black shadow-xl">
+                <i class="fas fa-phone-alt"></i> ZƏNG ET
+            </a>
+            <a href="https://wa.me/994509795781?text=Salam! Qəbələ turu üçün qrup qiymətləri ilə maraqlanıram." target="_blank" class="flex-1 bg-green-500 text-white flex items-center justify-center gap-3 py-5 rounded-[25px] font-black shadow-xl">
+                <i class="fab fa-whatsapp text-2xl"></i> WHATSAPP
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
