@@ -231,7 +231,10 @@
         const auth = getAuth(app);
         auth.languageCode = 'az'; // SMS Azərbaycan dilində gəlsin
 
-        const ADMIN_PHONE = "+994509795781";
+        const ADMIN_PHONE = [
+            "+994509795781",
+            "+994517277008"
+        ];
         let allTours = [];
         let currentCategory = "1";
         let confirmationResult = null; // OTP üçün
