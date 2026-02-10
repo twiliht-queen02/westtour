@@ -23,7 +23,8 @@
         #side-menu { transition: transform 0.3s ease-in-out; transform: translateX(-100%); }
         #side-menu.active { transform: translateX(0); }
         
-        #detail-view { transition: transform 0.4s ease-in-out; transform: translateX(100%); }
+        /* Detail View Animations */
+        #detail-view { transition: transform 0.3s ease-in-out; transform: translateX(100%); }
         #detail-view.active { transform: translateX(0); }
 
         /* Admin Action Buttons */
@@ -102,45 +103,47 @@
         </div>
     </main>
 
-    <div id="detail-view" class="fixed inset-0 bg-white z-[60] overflow-y-auto no-scrollbar">
-        <div class="relative h-[45vh]">
-            <button onclick="closeDetail()" class="absolute top-6 left-6 z-10 bg-black/20 backdrop-blur-md text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-black/40 transition">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <img id="d-img" src="" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-        </div>
-        <div class="p-8 -mt-10 bg-white rounded-t-[40px] relative min-h-[60vh]">
-            <div class="flex justify-between items-start mb-6">
-                <h2 id="d-name" class="text-3xl font-black text-gray-900 leading-tight w-3/4"></h2>
-                <div class="flex flex-col items-end">
-                    <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-2xl font-black text-xl"><span id="d-price"></span> ₼</span>
-                </div>
-            </div>
-            
-            <div class="flex gap-4 mb-8 overflow-x-auto no-scrollbar">
-                <div class="bg-gray-50 px-4 py-3 rounded-2xl min-w-[100px] text-center">
-                    <i class="fas fa-clock text-blue-500 mb-2"></i>
-                    <p class="text-xs font-bold text-gray-400">MÜDDƏT</p>
-                    <p class="font-bold text-gray-800" id="d-duration">1 Gün</p>
-                </div>
-                <div class="bg-gray-50 px-4 py-3 rounded-2xl min-w-[100px] text-center">
-                    <i class="fas fa-bus text-blue-500 mb-2"></i>
-                    <p class="text-xs font-bold text-gray-400">NƏQLİYYAT</p>
-                    <p class="font-bold text-gray-800">Komfort</p>
-                </div>
+    <div id="detail-view" class="fixed inset-0 bg-white z-[60] flex flex-col h-full w-full">
+        
+        <div class="flex-1 overflow-y-auto no-scrollbar relative w-full bg-white">
+            <div class="relative h-[45vh] w-full shrink-0">
+                <button onclick="closeDetail()" class="absolute top-6 left-6 z-10 bg-black/20 backdrop-blur-md text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-black/40 transition">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <img id="d-img" src="" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             </div>
 
-            <h3 class="font-bold text-lg mb-3">Tur Haqqında</h3>
-            <p id="d-desc" class="text-gray-600 leading-relaxed text-lg mb-48"></p>
-            
-            <div class="fixed bottom-0 left-0 w-full p-6 bg-white/90 backdrop-blur border-t">
-                <button id="wa-order-btn" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 rounded-[20px] font-black text-lg shadow-xl flex items-center justify-center gap-3 active:scale-95 transition">
-                    <i class="fab fa-whatsapp text-2xl"></i> SİFARİŞ ET
-                </button>
+            <div class="p-8 -mt-10 bg-white rounded-t-[40px] relative z-10 pb-10">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 id="d-name" class="text-3xl font-black text-gray-900 leading-tight w-3/4"></h2>
+                    <div class="flex flex-col items-end">
+                        <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-2xl font-black text-xl whitespace-nowrap"><span id="d-price"></span> ₼</span>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 mb-8 overflow-x-auto no-scrollbar">
+                    <div class="bg-gray-50 px-4 py-3 rounded-2xl min-w-[100px] text-center border border-gray-100">
+                        <i class="fas fa-clock text-blue-500 mb-2"></i>
+                        <p class="text-xs font-bold text-gray-400">MÜDDƏT</p>
+                        <p class="font-bold text-gray-800" id="d-duration">1 Gün</p>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 rounded-2xl min-w-[100px] text-center border border-gray-100">
+                        <i class="fas fa-bus text-blue-500 mb-2"></i>
+                        <p class="text-xs font-bold text-gray-400">NƏQLİYYAT</p>
+                        <p class="font-bold text-gray-800">Komfort</p>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-lg mb-3 text-blue-900">Tur Proqramı</h3>
+                <p id="d-desc" class="text-gray-600 leading-relaxed text-lg whitespace-pre-line"></p>
             </div>
-            <div class="h-24"></div> <div class="fixed bottom-0 left-0 w-full p-6 bg-white/90 backdrop-blur border-t">
-                <button id="wa-order-btn" ...>
+        </div>
+
+        <div class="w-full p-4 bg-white border-t border-gray-100 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] shrink-0 z-20">
+            <button id="wa-order-btn" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 rounded-[20px] font-black text-lg shadow-xl flex items-center justify-center gap-3 active:scale-95 transition">
+                <i class="fab fa-whatsapp text-2xl"></i> WHATSAPP İLƏ SİFARİŞ
+            </button>
         </div>
     </div>
 
@@ -157,7 +160,8 @@
             </div>
 
             <div id="admin-tab-add" class="space-y-4">
-                <input type="hidden" id="a-key"> <div class="grid grid-cols-2 gap-4">
+                <input type="hidden" id="a-key"> 
+                <div class="grid grid-cols-2 gap-4">
                     <input type="text" id="a-name" placeholder="Turun Adı" class="w-full p-4 bg-gray-50 border rounded-2xl focus:border-blue-500 outline-none">
                     <input type="number" id="a-price" placeholder="Qiymət (AZN)" class="w-full p-4 bg-gray-50 border rounded-2xl focus:border-blue-500 outline-none">
                 </div>
@@ -231,12 +235,12 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         const auth = getAuth(app);
-        auth.languageCode = 'az'; // SMS Azərbaycan dilində gəlsin
+        auth.languageCode = 'az';
 
         const ADMIN_PHONE = "+994509795781";
         let allTours = [];
         let currentCategory = "1";
-        let confirmationResult = null; // OTP üçün
+        let confirmationResult = null;
 
         // --- AUTH LOGIC (OTP) ---
         
@@ -334,7 +338,7 @@
                 document.getElementById('logout-section').classList.add('hidden');
                 document.getElementById('admin-toggle').classList.add('hidden');
             }
-            renderTours(); // Admin statusu dəyişə bilər deyə yenidən render edirik
+            renderTours(); 
         }
 
         auth.onAuthStateChanged((user) => {
