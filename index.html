@@ -9,98 +9,105 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Outfit', sans-serif; background-color: #f8fafc; }
+        body { font-family: 'Outfit', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; }
         .hero-bg { 
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3'); 
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3'); 
             background-size: cover; background-position: center; 
         }
-        .tour-card { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .tour-card:hover { transform: translateY(-10px); }
-        .tab-active { background: #2563eb; color: white; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        #detail-view { transition: transform 0.4s ease-in-out; transform: translateX(100%); }
+        .tour-card { transition: all 0.4s ease; border-radius: 32px; overflow: hidden; }
+        .tour-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
+        .tab-active { background: #2563eb; color: white; transform: scale(1.05); }
+        #detail-view { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); transform: translateX(100%); }
         #detail-view.active { transform: translateX(0); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="text-gray-800">
+<body>
 
-    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 px-6 py-4 flex justify-between items-center shadow-sm">
-        <h1 class="text-2xl font-black text-blue-600 tracking-tighter cursor-pointer">WEST<span class="text-green-500">TOUR</span></h1>
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-lg z-50 px-6 py-4 flex justify-between items-center shadow-sm">
+        <h1 class="text-2xl font-black text-blue-600 tracking-tighter">WEST<span class="text-green-500">TOUR</span></h1>
         <div class="flex items-center gap-4">
-            <button id="admin-toggle" class="hidden bg-gray-100 p-2 rounded-full text-blue-600" onclick="toggleAdminPanel()">
-                <i class="fas fa-cog"></i>
+            <button id="admin-btn" class="hidden bg-gray-100 p-2.5 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition" onclick="toggleAdmin()">
+                <i class="fas fa-plus"></i>
             </button>
-            <div id="auth-section">
-                <button onclick="openLogin()" class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold text-sm">Giriş</button>
+            <div id="user-status">
+                <button onclick="openLogin()" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold shadow-lg shadow-blue-200 text-sm">Giriş</button>
             </div>
         </div>
     </nav>
 
-    <header class="hero-bg h-[60vh] flex items-center justify-center text-white text-center px-4 pt-16">
-        <div>
-            <h2 class="text-5xl md:text-7xl font-black mb-4 uppercase">Şimalı Bizimlə Kəşf Et</h2>
-            <p class="text-lg md:text-xl font-light opacity-90">Azərbaycanın ən gözəl guşələrinə dinamik turlar</p>
+    <header class="hero-bg h-[55vh] flex items-center justify-center text-white text-center px-4 pt-16">
+        <div class="max-w-3xl">
+            <h2 class="text-5xl md:text-7xl font-black mb-4 tracking-tight uppercase">Şimalı Kəşf Et</h2>
+            <p class="text-lg md:text-xl font-light opacity-80">Azərbaycanın ən gözəl guşələrinə peşəkar turlar</p>
         </div>
     </header>
 
-    <section class="container mx-auto -mt-8 relative z-10 px-4">
-        <div class="flex bg-white p-2 rounded-2xl shadow-xl max-w-md mx-auto">
-            <button onclick="switchCategory('1')" id="tab1" class="flex-1 py-3 rounded-xl font-bold transition-all tab-active">1 GÜNLÜK</button>
-            <button onclick="switchCategory('2')" id="tab2" class="flex-1 py-3 rounded-xl font-bold transition-all text-gray-400">2 GÜNLÜK</button>
+    <section class="container mx-auto -mt-10 relative z-10 px-4">
+        <div class="flex bg-white/90 backdrop-blur-md p-2 rounded-3xl shadow-2xl max-w-sm mx-auto border border-white">
+            <button onclick="switchCat('1')" id="tab1" class="flex-1 py-4 rounded-2xl font-black transition-all tab-active text-sm">1 GÜNLÜK</button>
+            <button onclick="switchCat('2')" id="tab2" class="flex-1 py-4 rounded-2xl font-black transition-all text-gray-400 text-sm">2 GÜNLÜK</button>
         </div>
     </section>
 
-    <main class="container mx-auto py-16 px-4">
-        <div id="tours-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="col-span-full text-center py-20 opacity-50"><i class="fas fa-spinner fa-spin text-3xl"></i></div>
-        </div>
+    <main class="container mx-auto py-20 px-6">
+        <div id="tours-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            </div>
     </main>
 
     <div id="detail-view" class="fixed inset-0 bg-white z-[60] overflow-y-auto no-scrollbar">
         <div class="relative h-[45vh]">
-            <button onclick="closeDetail()" class="absolute top-6 left-6 z-10 bg-black/20 backdrop-blur-md text-white w-12 h-12 rounded-full flex items-center justify-center">
-                <i class="fas fa-arrow-left"></i>
+            <button onclick="closeDetail()" class="absolute top-6 left-6 z-10 bg-black/30 backdrop-blur-xl text-white w-12 h-12 rounded-full flex items-center justify-center">
+                <i class="fas fa-chevron-left"></i>
             </button>
             <img id="d-img" src="" class="w-full h-full object-cover">
+            <div class="absolute bottom-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
         </div>
-        <div class="p-8 -mt-10 bg-white rounded-t-[40px] relative">
-            <div class="flex justify-between items-start mb-6">
-                <h2 id="d-name" class="text-3xl font-black text-gray-900 leading-tight"></h2>
-                <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-2xl font-black text-xl"><span id="d-price"></span> AZN</span>
+        <div class="p-8 max-w-4xl mx-auto">
+            <div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+                <h2 id="d-name" class="text-4xl font-black text-gray-900 leading-tight"></h2>
+                <div class="bg-blue-600 text-white px-6 py-3 rounded-2xl font-black text-2xl shadow-xl shadow-blue-100">
+                    <span id="d-price"></span> AZN
+                </div>
             </div>
-            <p id="d-desc" class="text-gray-600 leading-relaxed text-lg mb-24"></p>
-            <div class="fixed bottom-8 left-0 w-full px-6">
-                <button id="wa-order-btn" class="w-full bg-green-500 text-white py-5 rounded-[25px] font-black text-xl shadow-2xl flex items-center justify-center gap-3 active:scale-95 transition">
-                    <i class="fab fa-whatsapp text-2xl"></i> WHATSAPP İLƏ SİFARİŞ
-                </button>
-            </div>
+            <p id="d-desc" class="text-gray-600 leading-relaxed text-lg mb-32 whitespace-pre-line"></p>
+        </div>
+        <div class="fixed bottom-0 w-full p-6 bg-gradient-to-t from-white via-white to-transparent">
+            <button id="order-btn" class="w-full max-w-2xl mx-auto block bg-green-500 text-white py-5 rounded-[28px] font-black text-xl shadow-2xl shadow-green-200 flex items-center justify-center gap-3 active:scale-95 transition">
+                <i class="fab fa-whatsapp text-2xl"></i> SİFARİŞ ET
+            </button>
         </div>
     </div>
 
-    <div id="admin-panel" class="fixed inset-0 bg-black/60 z-[70] hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-white w-full max-w-lg p-8 rounded-[35px] shadow-2xl max-h-[90vh] overflow-y-auto">
-            <h3 class="text-2xl font-black mb-6">YENİ TUR ƏLAVƏ ET</h3>
+    <div id="admin-modal" class="fixed inset-0 bg-black/60 z-[70] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-lg p-8 rounded-[40px] shadow-2xl">
+            <h3 class="text-2xl font-black mb-6 flex items-center gap-3"><i class="fas fa-plus-circle text-blue-600"></i> Yeni Tur</h3>
             <div class="space-y-4">
-                <input type="text" id="a-name" placeholder="Turun Adı" class="w-full p-4 bg-gray-50 border rounded-2xl">
-                <input type="number" id="a-price" placeholder="Qiymət (AZN)" class="w-full p-4 bg-gray-50 border rounded-2xl">
-                <input type="text" id="a-img" placeholder="Şəkil URL" class="w-full p-4 bg-gray-50 border rounded-2xl">
-                <textarea id="a-desc" placeholder="Tur proqramı və ətraflı məlumat..." rows="4" class="w-full p-4 bg-gray-50 border rounded-2xl"></textarea>
-                <select id="a-type" class="w-full p-4 bg-gray-50 border rounded-2xl font-bold">
-                    <option value="1">1 GÜNLÜK</option>
-                    <option value="2">2 GÜNLÜK</option>
-                </select>
-                <button onclick="addTour()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-black shadow-lg">SİSTEMƏ ƏLAVƏ ET</button>
-                <button onclick="toggleAdminPanel()" class="w-full text-gray-400 font-bold py-2">BAĞLA</button>
+                <input type="text" id="a-name" placeholder="Turun adı" class="w-full p-4 bg-gray-50 border-none rounded-2xl focus:ring-2 ring-blue-500 outline-none">
+                <div class="flex gap-4">
+                    <input type="number" id="a-price" placeholder="Qiymət" class="w-1/2 p-4 bg-gray-50 border-none rounded-2xl">
+                    <select id="a-type" class="w-1/2 p-4 bg-gray-50 border-none rounded-2xl font-bold">
+                        <option value="1">1 GÜNLÜK</option>
+                        <option value="2">2 GÜNLÜK</option>
+                    </select>
+                </div>
+                <input type="text" id="a-img" placeholder="Şəkil URL" class="w-full p-4 bg-gray-50 border-none rounded-2xl">
+                <textarea id="a-desc" placeholder="Tur haqqında məlumat..." rows="4" class="w-full p-4 bg-gray-50 border-none rounded-2xl"></textarea>
+                <button onclick="saveTour()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-black shadow-xl">YADDA SAXLA</button>
+                <button onclick="toggleAdmin()" class="w-full text-gray-400 font-bold">LƏĞV ET</button>
             </div>
         </div>
     </div>
 
     <div id="login-modal" class="fixed inset-0 bg-black/80 z-[100] hidden flex items-center justify-center p-4">
-        <div class="bg-white p-10 rounded-[40px] w-full max-w-md text-center">
-            <h3 class="text-2xl font-black mb-6">DAXİL OL</h3>
-            <input type="tel" id="user-phone" placeholder="050 000 00 00" class="w-full p-5 border-2 rounded-[25px] mb-6 text-center text-xl font-bold">
-            <button onclick="handleLogin()" class="w-full bg-blue-600 text-white py-5 rounded-[25px] font-black uppercase shadow-xl">TƏSDİQLƏ</button>
-            <button onclick="document.getElementById('login-modal').classList.add('hidden')" class="mt-4 text-gray-400 font-bold uppercase text-xs">LƏĞV ET</button>
+        <div class="bg-white p-10 rounded-[45px] w-full max-w-md text-center shadow-2xl">
+            <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                <i class="fas fa-user-circle"></i>
+            </div>
+            <h3 class="text-2xl font-black mb-2">Xoş Gəldiniz</h3>
+            <p class="text-gray-400 mb-8">Nömrənizi daxil edərək davam edin</p>
+            <input type="tel" id="u-phone" placeholder="050 000 00 00" class="w-full p-5 bg-gray-50 border-none rounded-3xl mb-6 text-center text-xl font-bold focus:ring-2 ring-blue-500 outline-none">
+            <button onclick="doLogin()" class="w-full bg-blue-600 text-white py-5 rounded-3xl font-black shadow-xl shadow-blue-100">DAXİL OL</button>
         </div>
     </div>
 
@@ -108,130 +115,100 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, onValue, push, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        // FIREBASE AYARLARI (Öz məlumatlarını bura qoy)
+        // FIREBASE KONFİQURASİYASI (Öz məlumatlarını bura yapışdır)
         const firebaseConfig = {
+            apiKey: "SƏNİN_API_KEY",
             databaseURL: "https://westtour-eaf31-default-rtdb.firebaseio.com",
             projectId: "westtour-eaf31",
         };
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
-        const ADMIN_PHONE = "0509795781"; // Sənin nömrən
-        
-        let allTours = [];
-        let currentCategory = "1";
+        const ADMIN_NUM = "0509795781";
+        let tours = [];
+        let cat = "1";
 
-        // TUR RENDERING
-        window.renderTours = () => {
-            const container = document.getElementById('tours-grid');
-            const filtered = allTours.filter(t => t.type === currentCategory);
-            const userPhone = localStorage.getItem('userPhone');
-            const isAdmin = userPhone === ADMIN_PHONE;
+        // TURLARI GÖSTƏR
+        window.render = () => {
+            const container = document.getElementById('tours-container');
+            const filtered = tours.filter(t => t.type === cat);
+            const isAdmin = localStorage.getItem('phone') === ADMIN_NUM;
 
-            if(filtered.length === 0) {
-                container.innerHTML = `<p class="col-span-full text-center text-gray-400 py-20 font-medium text-lg">Bu kateqoriyada tur tapılmadı.</p>`;
-                return;
-            }
-
-            container.innerHTML = filtered.map(tour => `
-                <div class="bg-white rounded-[35px] shadow-lg border border-gray-100 overflow-hidden tour-card relative group" onclick="showDetail('${tour.key}')">
-                    ${isAdmin ? `<button onclick="event.stopPropagation(); deleteTour('${tour.key}')" class="absolute top-4 right-4 z-20 bg-white/90 text-red-500 w-10 h-10 rounded-full shadow-md hover:bg-red-500 hover:text-white transition"><i class="fas fa-trash"></i></button>` : ''}
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="${tour.img}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div class="absolute bottom-6 left-6 text-white">
-                            <span class="bg-blue-600 text-white px-3 py-1 rounded-lg text-xs font-bold mb-2 inline-block">FULL PAKET</span>
-                            <h3 class="text-2xl font-black">${tour.name}</h3>
+            container.innerHTML = filtered.length ? filtered.map(t => `
+                <div class="bg-white tour-card shadow-lg border border-gray-50 group cursor-pointer" onclick="openDetail('${t.key}')">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="${t.img}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <p class="text-white/70 text-xs font-bold uppercase tracking-widest mb-1">Premium Tur</p>
+                            <h3 class="text-white text-2xl font-black">${t.name}</h3>
                         </div>
+                        ${isAdmin ? `<button onclick="event.stopPropagation(); deleteT('${t.key}')" class="absolute top-4 right-4 bg-white/90 text-red-500 w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-500 hover:text-white transition shadow-lg"><i class="fas fa-trash"></i></button>` : ''}
                     </div>
-                    <div class="p-6 flex justify-between items-center">
+                    <div class="p-6 flex justify-between items-center bg-white">
                         <div>
-                            <p class="text-gray-400 text-xs font-bold uppercase tracking-widest">Qiymət</p>
-                            <p class="text-2xl font-black text-blue-600">${tour.price} AZN</p>
+                            <span class="text-blue-600 font-black text-2xl">${t.price} AZN</span>
+                            <span class="text-gray-400 text-xs ml-1">/ nəfər</span>
                         </div>
-                        <button class="bg-gray-900 text-white px-6 py-3 rounded-2xl font-bold text-sm">ƏTRAFLI</button>
+                        <span class="bg-gray-100 text-gray-800 px-4 py-2 rounded-xl text-xs font-black group-hover:bg-blue-600 group-hover:text-white transition">İNDİ BAX</span>
                     </div>
                 </div>
-            `).join('');
+            `).join('') : '<p class="col-span-full text-center text-gray-400 py-20 font-bold">Tur tapılmadı.</p>';
         };
 
-        // FIREBASE-DƏN MƏLUMAT ÇƏKMƏK
-        onValue(ref(db, 'tours'), (snapshot) => {
-            const data = snapshot.val();
-            allTours = [];
-            if(data) Object.entries(data).forEach(([key, val]) => allTours.push({ key, ...val }));
-            renderTours();
+        // DATA ÇƏK
+        onValue(ref(db, 'tours'), (s) => {
+            const d = s.val();
+            tours = d ? Object.entries(d).map(([k, v]) => ({ key: k, ...v })) : [];
+            render();
         });
 
-        // ADMIN FUNKSIYALARI
-        window.addTour = () => {
-            const name = document.getElementById('a-name').value;
-            const price = document.getElementById('a-price').value;
-            const img = document.getElementById('a-img').value;
-            const type = document.getElementById('a-type').value;
-            const desc = document.getElementById('a-desc').value;
-
-            if(name && price && img) {
-                push(ref(db, 'tours'), { name, price, img, type, desc })
-                .then(() => {
-                    alert("Uğurla əlavə olundu!");
-                    toggleAdminPanel();
-                    document.querySelectorAll('#admin-panel input, #admin-panel textarea').forEach(i => i.value = "");
-                });
-            }
+        // FUNKSİYALAR
+        window.switchCat = (c) => {
+            cat = c;
+            document.getElementById('tab1').className = c === '1' ? 'flex-1 py-4 rounded-2xl font-black transition-all tab-active text-sm' : 'flex-1 py-4 rounded-2xl font-black transition-all text-gray-400 text-sm';
+            document.getElementById('tab2').className = c === '2' ? 'flex-1 py-4 rounded-2xl font-black transition-all tab-active text-sm' : 'flex-1 py-4 rounded-2xl font-black transition-all text-gray-400 text-sm';
+            render();
         };
 
-        window.deleteTour = (key) => {
-            if(confirm("Bu turu sistemdən silmək istəyirsiniz?")) {
-                remove(ref(db, `tours/${key}`));
-            }
-        };
-
-        // UI NAVIGASYON
-        window.switchCategory = (cat) => {
-            currentCategory = cat;
-            document.getElementById('tab1').className = cat === '1' ? 'flex-1 py-3 rounded-xl font-bold transition-all tab-active' : 'flex-1 py-3 rounded-xl font-bold transition-all text-gray-400';
-            document.getElementById('tab2').className = cat === '2' ? 'flex-1 py-3 rounded-xl font-bold transition-all tab-active' : 'flex-1 py-3 rounded-xl font-bold transition-all text-gray-400';
-            renderTours();
-        };
-
-        window.showDetail = (key) => {
-            const tour = allTours.find(t => t.key === key);
-            document.getElementById('d-img').src = tour.img;
-            document.getElementById('d-name').innerText = tour.name;
-            document.getElementById('d-price').innerText = tour.price;
-            document.getElementById('d-desc').innerText = tour.desc || "Xüsusi proqram üçün bizimlə əlaqə saxlayın.";
-            
-            document.getElementById('wa-order-btn').onclick = () => {
-                const p = localStorage.getItem('userPhone') || "Müştəri";
-                const text = `Salam! Mən ${p} nömrəsi ilə ${tour.name} (${tour.price} AZN) turuna yazılmaq istəyirəm.`;
-                window.open(`https://wa.me/994509795781?text=${encodeURIComponent(text)}`, '_blank');
+        window.openDetail = (k) => {
+            const t = tours.find(x => x.key === k);
+            document.getElementById('d-img').src = t.img;
+            document.getElementById('d-name').innerText = t.name;
+            document.getElementById('d-price').innerText = t.price;
+            document.getElementById('d-desc').innerText = t.desc || "Məlumat yoxdur.";
+            document.getElementById('order-btn').onclick = () => {
+                const u = localStorage.getItem('phone') || "Qonaq";
+                window.open(`https://wa.me/994509795781?text=${encodeURIComponent('Salam! '+u+' nömrəsi ilə '+t.name+' turu üçün yazıram.')}`);
             };
             document.getElementById('detail-view').classList.add('active');
         };
 
-        window.closeDetail = () => document.getElementById('detail-view').classList.remove('active');
-        window.openLogin = () => document.getElementById('login-modal').classList.remove('hidden');
-        window.toggleAdminPanel = () => document.getElementById('admin-panel').classList.toggle('hidden');
-
-        window.handleLogin = () => {
-            const p = document.getElementById('user-phone').value;
-            if(p.length > 7) {
-                localStorage.setItem('userPhone', p);
-                location.reload();
-            }
+        window.saveTour = () => {
+            const data = {
+                name: document.getElementById('a-name').value,
+                price: document.getElementById('a-price').value,
+                img: document.getElementById('a-img').value,
+                type: document.getElementById('a-type').value,
+                desc: document.getElementById('a-desc').value
+            };
+            if(data.name && data.price) push(ref(db, 'tours'), data).then(() => { toggleAdmin(); alert("Tur əlavə edildi!"); });
         };
 
-        // LOGIN YOXLANIŞI
-        const savedPhone = localStorage.getItem('userPhone');
-        if(savedPhone) {
-            document.getElementById('auth-section').innerHTML = `
-                <div class="flex items-center gap-3">
-                    <span class="text-xs font-black bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">${savedPhone}</span>
-                    <button onclick="localStorage.removeItem('userPhone'); location.reload();" class="text-red-500 text-sm font-bold">Çıxış</button>
-                </div>
-            `;
-            if(savedPhone === ADMIN_PHONE) document.getElementById('admin-toggle').classList.remove('hidden');
+        window.deleteT = (k) => confirm("Silinsin?") && remove(ref(db, `tours/${k}`));
+        window.closeDetail = () => document.getElementById('detail-view').classList.remove('active');
+        window.openLogin = () => document.getElementById('login-modal').classList.remove('hidden');
+        window.toggleAdmin = () => document.getElementById('admin-modal').classList.toggle('hidden');
+        window.doLogin = () => {
+            const p = document.getElementById('u-phone').value;
+            if(p.length > 7) { localStorage.setItem('phone', p); location.reload(); }
+        };
+
+        // AUTH CHECK
+        const p = localStorage.getItem('phone');
+        if(p) {
+            document.getElementById('user-status').innerHTML = `<button onclick="localStorage.removeItem('phone'); location.reload();" class="text-xs font-black text-red-500 bg-red-50 px-4 py-2 rounded-full border border-red-100">${p} - ÇIXIŞ</button>`;
+            if(p === ADMIN_NUM) document.getElementById('admin-btn').classList.remove('hidden');
         }
     </script>
 </body>
