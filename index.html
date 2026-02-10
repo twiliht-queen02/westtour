@@ -327,8 +327,7 @@
                     document.getElementById('admin-toggle').classList.remove('hidden');
                 } else {
                     document.getElementById('admin-toggle').classList.add('hidden');
-                }
-            } else {
+                } else {
                 // Qonaq
                 document.getElementById('menu-user-phone').innerText = "Qonaq";
                 document.getElementById('auth-btn-container').innerHTML = `<button onclick="openLogin()" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold text-sm shadow-md">Giriş</button>`;
@@ -348,7 +347,7 @@
             const container = document.getElementById('tours-grid');
             const filtered = allTours.filter(t => t.type === currentCategory);
             const user = auth.currentUser;
-            const isAdmin = user && user.phoneNumber === ADMIN_PHONE;
+            const isAdmin = user && ADMIN_PHONE.includes(user.phoneNumber);
 
             if(filtered.length === 0) {
                 container.innerHTML = `<p class="col-span-full text-center text-gray-400 py-20 font-medium text-lg">Bu kateqoriyada tur yoxdur.</p>`;
